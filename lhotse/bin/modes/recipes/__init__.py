@@ -49,6 +49,7 @@ from .hifitts import *
 from .himia import *
 from .icmcasr import *
 from .icsi import *
+from .indic_muls import *
 from .iwslt22_ta import *
 from .kespeech import *
 from .ksponspeech import *

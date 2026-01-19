@@ -45,6 +45,7 @@ from .hifitts import download_hifitts, prepare_hifitts
 from .himia import download_himia, prepare_himia
 from .icmcasr import prepare_icmcasr
 from .icsi import download_icsi, prepare_icsi
+from .indic_muls import download_indic_muls, prepare_indic_muls
 from .iwslt22_ta import prepare_iwslt22_ta
 from .kespeech import prepare_kespeech
 from .ksponspeech import prepare_ksponspeech
@@ -111,6 +112,8 @@ __all__ = [
     "prepare_aishell3",
     "download_aishell4",
     "prepare_aishell4",
+    "download_alffa",
+    "prepare_alffa",
     "download_ali_meeting",
     "prepare_ali_meeting",
     "download_ami",
@@ -131,7 +134,6 @@ __all__ = [
     "prepare_chime6",
     "download_cmu_arctic",
     "prepare_cmu_arctic",
-    "download_cmu_indic",
     "prepare_cmu_indic",
     "prepare_cmu_kids",
     "prepare_commonvoice",
@@ -171,7 +173,9 @@ __all__ = [
     "prepare_himia",
     "prepare_icmcasr",
     "download_icsi",
-    "prepare_icsi",
+    "prepare_icsi", 
+    "download_indic_muls",
+    "prepare_indic_muls",
     "prepare_iwslt22_ta",
     "prepare_kespeech",
     "prepare_ksponspeech",
