@@ -43,6 +43,7 @@ from .grid import download_grid, prepare_grid
 from .heroico import download_heroico, prepare_heroico
 from .hifitts import download_hifitts, prepare_hifitts
 from .himia import download_himia, prepare_himia
+from .iberian_muls import download_iberian_muls, prepare_iberian_muls
 from .icmcasr import prepare_icmcasr
 from .icsi import download_icsi, prepare_icsi
 from .indic_muls import download_indic_muls, prepare_indic_muls
@@ -89,6 +90,7 @@ from .stcmds import download_stcmds, prepare_stcmds
 from .switchboard import prepare_switchboard
 from .tedlium import download_tedlium, prepare_tedlium
 from .tedlium2 import download_tedlium2, prepare_tedlium2
+from .tedxtn import prepare_tedxtn, download_tedxtn
 from .thchs_30 import download_thchs_30, prepare_thchs_30
 from .this_american_life import download_this_american_life, prepare_this_american_life
 from .timit import download_timit, prepare_timit
@@ -171,6 +173,8 @@ __all__ = [
     "prepare_hifitts",
     "download_himia",
     "prepare_himia",
+    "download_iberian_muls",
+    "prepare_iberian_muls",
     "prepare_icmcasr",
     "download_icsi",
     "prepare_icsi", 
