@@ -1165,18 +1165,42 @@ def test_time_constraint_strictness():
     assert strict.exceeded()  # because longest seen 30s * 4 seen cuts = 120s
 
 
+def test_time_constraint_concatenate_cuts():
+    strict = TimeConstraint(max_duration=100, concatenate_cuts=True)
+    # for `concatenate_cuts=True` the behavior of `exceeded()`
+    # and `close_to_exceeding()` is the same
+
+    cut_durs = [50.0, 30.0, 10.0, 10.0, 20.0]
+    assert sum(cut_durs) == pytest.approx(120.0)
+    cuts = [dummy_cut(idx, duration=cd) for idx, cd in enumerate(cut_durs)]
+
+    strict.add(cuts[0])  # total duration: 50s
+    assert not strict.close_to_exceeding()
+    assert not strict.exceeded()
+
+    strict.add(cuts[1])  # total duration: 80s
+    assert not strict.close_to_exceeding()
+    assert not strict.exceeded()
+
+    strict.add(cuts[2])  # total duration: 90s
+    assert not strict.close_to_exceeding()  # because 90s < max_duration
+    assert not strict.exceeded()
+
+    strict.add(cuts[3])  # total duration: 100s
+    assert not strict.close_to_exceeding()  # 100s is not yet above max_duration
+    assert not strict.exceeded()  # 100s is not yet above max_duration
+
+    strict.add(cuts[4])  # total duration: 120s
+    assert strict.close_to_exceeding()  # because 120s is above max_duration
+    assert strict.exceeded()  # 120s is above max_duration
+
+
 @pytest.mark.parametrize(
     "sampler_fn",
     [
         SimpleCutSampler,
         DynamicCutSampler,
-        pytest.param(
-            partial(BucketingSampler, num_buckets=2),
-            marks=pytest.mark.xfail(
-                reason="BucketingSampler will oversample cuts when world_size>1 and drop_last=False "
-                "more than other samplers due to its implementation."
-            ),
-        ),
+        partial(BucketingSampler, num_buckets=2),
         partial(DynamicBucketingSampler, num_buckets=2),
     ],
 )
@@ -1187,6 +1211,16 @@ def test_time_constraint_strictness():
 def test_sampler_does_not_drop_cuts_with_multiple_ranks(
     sampler_fn, world_size, batch_duration
 ):
+    if (
+        isinstance(sampler_fn, partial)
+        and sampler_fn.func is BucketingSampler
+        and (world_size in {16, 32} or (world_size == 2 and batch_duration in {1, 2}))
+    ):
+        pytest.xfail(
+            "BucketingSampler will oversample cuts when world_size>1 and drop_last=False "
+            "more than other samplers due to its implementation."
+        )
+
     cuts = DummyManifest(CutSet, begin_id=0, end_id=10)
     num_input_cuts = len(cuts)
 
