@@ -3,6 +3,7 @@ from .aishell import download_aishell, prepare_aishell
 from .aishell3 import download_aishell3, prepare_aishell3
 from .aishell4 import download_aishell4, prepare_aishell4
 from .alffa import download_alffa, prepare_alffa
+from .armenian_crowdsourced import download_armenian_crowdsourced, prepare_armenian_crowdsourced
 from .ali_meeting import download_ali_meeting, prepare_ali_meeting
 from .ami import download_ami, prepare_ami
 from .aspire import prepare_aspire
@@ -73,7 +74,6 @@ from .mobvoihotwords import download_mobvoihotwords, prepare_mobvoihotwords
 from .mtedx import download_mtedx, prepare_mtedx
 from .musan import download_musan, prepare_musan
 from .nsc import prepare_nsc
-from .oto_speech import download_oto_speech, prepare_oto_speech
 from .peoples_speech import prepare_peoples_speech
 from .radio import prepare_radio
 from .reazonspeech import download_reazonspeech, prepare_reazonspeech
@@ -117,6 +117,8 @@ __all__ = [
     "prepare_aishell4",
     "download_alffa",
     "prepare_alffa",
+    "download_armenian_crowdsourced",
+    "prepare_armenian_crowdsourced",
     "download_ali_meeting",
     "prepare_ali_meeting",
     "download_ami",

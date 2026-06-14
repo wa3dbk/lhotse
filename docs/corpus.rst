@@ -55,6 +55,8 @@ a CLI tool that create the manifests given a corpus directory.
     - :func:`lhotse.recipes.prepare_aishell4`
   * - AliMeeting
     - :func:`lhotse.recipes.prepare_alimeeting`
+  * - Armenian Crowdsourced Speech (SLR160)
+    - :func:`lhotse.recipes.prepare_armenian_crowdsourced`
   * - AMI
     - :func:`lhotse.recipes.prepare_ami`
   * - ASpIRE
@@ -179,8 +181,6 @@ a CLI tool that create the manifests given a corpus directory.
     - :func:`lhotse.recipes.prepare_notsofar1`
   * - National Speech Corpus (Singaporean English)
     - :func:`lhotse.recipes.prepare_nsc`
-  * - otoSpeech
-    - :func:`lhotse.recipes.prepare_oto_speech`
   * - People's Speech
     - :func:`lhotse.recipes.prepare_peoples_speech`
   * - ReazonSpeech

@@ -5,6 +5,7 @@ from .aishell2 import *
 from .aishell3 import *
 from .aishell4 import *
 from .alffa import *
+from .armenian_crowdsourced import *
 from .ali_meeting import *
 from .ami import *
 from .aspire import *
@@ -72,7 +73,6 @@ from .musan import *
 from .must_c import *
 from .notsofar1 import *
 from .nsc import *
-from .oto_speech import *
 from .peoples_speech import *
 from .primewords import *
 from .radio import *
